@@ -1,0 +1,4 @@
+// 1.20.1	2024-08-20T19:46:36.7262227	Registrate Provider for permitted [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
+ab7055b425d893b25b19dbffb63fd51b85b17740 assets/permitted/lang/en_ud.json
+c586fa1b05566c59b2c42d84c80ca01ea134929d assets/permitted/lang/en_us.json
+b94b03a410b79ec2ddabba330c9555a6647e6e55 assets/permitted/models/item/permit.json

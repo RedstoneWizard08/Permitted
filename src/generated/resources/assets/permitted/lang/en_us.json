@@ -1,0 +1,14 @@
+{
+  "item.permitted.permit": "Permit",
+  "itemGroup.permitted": "Permitted",
+  "permit.items.joiner": ", ",
+  "permit.items.joiner_and": " and ",
+  "permit.items.joiner_last": ", and ",
+  "permit.rarity.diamond": "§o§l§bDiamond Tier§r",
+  "permit.rarity.dirt": "§o§l§6Dirt Tier§r",
+  "permit.rarity.emerald": "§o§l§aEmerald Tier§r",
+  "permit.rarity.gold": "§o§l§eGold Tier§r",
+  "permit.rarity.iron": "§o§l§fIron Tier§r",
+  "permit.rarity.none": "§o§l§cNo Tier§r",
+  "permit.title": "%s Permit"
+}
