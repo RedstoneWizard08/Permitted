@@ -5,6 +5,7 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonObject;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.block.model.ItemOverrides;
+import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.*;
 import net.minecraft.resources.ResourceLocation;
@@ -29,27 +30,34 @@ import java.util.function.Function;
 public record DynamicPermitModel(PermitData.Rarity rarity) implements IUnbakedGeometry<DynamicPermitModel> {
     private static final Map<PermitData.Rarity, BakedModel> cache = Maps.newHashMap();
     private static UnbakedModel unbaked = null;
+    private static final ResourceLocation missing = new ResourceLocation("minecraft:missingno");
 
+    @SuppressWarnings("deprecation")
     @Override
     @ParametersAreNonnullByDefault
     public BakedModel bake(IGeometryBakingContext ctx, ModelBaker baker, Function<Material, TextureAtlasSprite> getter, ModelState state, ItemOverrides overrides, ResourceLocation id) {
         if (unbaked == null) {
-            unbaked = baker.getModel(Permitted.id("item/" + rarity.name().toLowerCase() + "_permit"));
+            unbaked = baker.getModel(new ResourceLocation("minecraft", "item/generated"));
         }
 
         BakedModel baked = unbaked.bake(baker, getter, state, id);
 
         assert baked != null;
 
+        Function<Material, TextureAtlasSprite> betterGetter = material ->
+                getter.apply(!material.texture().equals(missing) ?
+                        material :
+                        new Material(TextureAtlas.LOCATION_BLOCKS, Permitted.id("item/" + rarity.name().toLowerCase() + "_permit")));
+
         var builder = CompositeModel.Baked.builder(
                 ctx,
-                getter.apply(ctx.getMaterial("gem")),
+                betterGetter.apply(ctx.getMaterial("layer0")),
                 new OverrideHandler(overrides, baker, ctx),
                 ctx.getTransforms()
         );
 
         builder.addLayer(baked);
-        builder.setParticle(getter.apply(ctx.getMaterial("gem")));
+        builder.setParticle(betterGetter.apply(ctx.getMaterial("layer0")));
 
         return builder.build();
     }

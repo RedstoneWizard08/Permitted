@@ -1,4 +1,7 @@
 {
   "parent": "minecraft:item/generated",
-  "loader": "permitted:permit"
+  "loader": "permitted:permit",
+  "textures": {
+    "layer0": "minecraft:missingno"
+  }
 }
