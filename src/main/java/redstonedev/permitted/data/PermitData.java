@@ -7,29 +7,43 @@ import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import redstonedev.permitted.util.ExtraCodecs;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 import java.util.function.Supplier;
 
+@SuppressWarnings("OptionalUsedAsFieldOrParameterType")
 public class PermitData {
     public static final Codec<PermitData> CODEC = RecordCodecBuilder.create(inst -> inst.group(
             ItemStack.CODEC.listOf().xmap(ArrayList::new, ArrayList::new).fieldOf("items").forGetter(data -> new ArrayList<>(data.items.stream().map(Item::getDefaultInstance).toList())),
-            Codec.STRING.xmap(Rarity::valueOf, Rarity::name).fieldOf("rarity").forGetter(data -> data.rarity)
+            Codec.STRING.xmap(Rarity::valueOf, Rarity::name).fieldOf("rarity").forGetter(data -> data.rarity),
+            ExtraCodecs.UUID_CODEC.optionalFieldOf("owner").forGetter(data -> data.owner),
+            Codec.STRING.optionalFieldOf("ownerName").forGetter(data -> data.ownerName)
     ).apply(inst, PermitData::new));
 
     public static final PermitData DEFAULT = new PermitData();
 
     public final ArrayList<Item> items;
     public Rarity rarity;
+    public Optional<UUID> owner;
+    public Optional<String> ownerName;
 
     public PermitData() {
-        this(List.of(), Rarity.NONE);
+        this(List.of(), Rarity.NONE, Optional.empty(), Optional.empty());
     }
 
-    public PermitData(List<ItemStack> items, Rarity rarity) {
+    public PermitData(List<ItemStack> items, Rarity rarity, Optional<UUID> owner, Optional<String> ownerName) {
         this.items = new ArrayList<>(items.stream().map(ItemStack::getItem).toList());
         this.rarity = rarity;
+        this.owner = owner;
+        this.ownerName = ownerName;
+    }
+
+    public Component getOwner() {
+        return ownerName.map(Component::literal).orElse(Component.translatable("permit.owner.none"));
     }
 
     public Component getName() {

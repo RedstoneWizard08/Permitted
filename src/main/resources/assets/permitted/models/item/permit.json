@@ -1,7 +1,14 @@
 {
   "parent": "minecraft:item/generated",
-  "loader": "permitted:permit",
   "textures": {
-    "layer0": "minecraft:missingno"
-  }
+    "layer0": "permitted:item/none_permit"
+  },
+  "overrides": [
+    { "predicate": { "permitted:rarity": 0.0 }, "model": "permitted:item/none_permit" },
+    { "predicate": { "permitted:rarity": 0.1 }, "model": "permitted:item/dirt_permit" },
+    { "predicate": { "permitted:rarity": 0.2 }, "model": "permitted:item/iron_permit" },
+    { "predicate": { "permitted:rarity": 0.3 }, "model": "permitted:item/gold_permit" },
+    { "predicate": { "permitted:rarity": 0.4 }, "model": "permitted:item/diamond_permit" },
+    { "predicate": { "permitted:rarity": 0.5 }, "model": "permitted:item/emerald_permit" }
+  ]
 }
