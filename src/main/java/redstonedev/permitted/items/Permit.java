@@ -56,7 +56,7 @@ public class Permit extends Item {
     public @NotNull InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, @NotNull InteractionHand pUsedHand) {
         ItemStack stack = pPlayer.getItemInHand(pUsedHand);
 
-        if (!pLevel.isClientSide || !pPlayer.isCrouching()) {
+        if (!pLevel.isClientSide && pPlayer.isCrouching()) {
             PermitData permitData = PermitData.getOrCreate(stack);
 
             if (permitData.owner.isEmpty() && permitData.ownerName.isEmpty()) {
@@ -67,6 +67,6 @@ public class Permit extends Item {
             }
         }
 
-        return InteractionResultHolder.pass(stack);
+        return InteractionResultHolder.success(stack);
     }
 }

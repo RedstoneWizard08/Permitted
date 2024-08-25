@@ -8,7 +8,7 @@
   "permit.items.joiner_last": ", and ",
   "permit.items.list": "§aPermit items:§r",
   "permit.owner": "§eOwner: §b%s§r",
-  "permit.owner.none": "None",
+  "permit.owner.none": "§cNone§r",
   "permit.rarity.diamond": "§o§l§bDiamond Tier§r",
   "permit.rarity.dirt": "§o§l§6Dirt Tier§r",
   "permit.rarity.emerald": "§o§l§aEmerald Tier§r",
