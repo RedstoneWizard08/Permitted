@@ -28,7 +28,9 @@ public class PermitSlot extends Slot {
         if (stack.getItem() instanceof Permit) {
             PermitData permitData = PermitData.get(stack);
 
-            return permitData.owner.isPresent() && permitData.owner.get().equals(this.vendor.getOwner());
+            if (permitData.owner.isPresent() && permitData.owner.get().equals(this.vendor.getOwner())) {
+                return super.mayPlace(stack);
+            }
         }
 
         return false;

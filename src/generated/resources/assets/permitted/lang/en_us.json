@@ -1,13 +1,11 @@
 {
-  "death.attack.permit_office.waited_too_long": "Grian did his job, and %1$s suffered the consequences.",
+  "death.attack.permit_office.waited_too_long": "The Permit Office did its job, and %1$s suffered the consequences.",
+  "death.attack.permit_office.waited_too_long.player": "The Permit Office did its job, and %1$s suffered the consequences from %2$s.",
   "item.permitted.permit": "Permit",
   "itemGroup.permitted": "Permitted",
   "permit.instructions.left_click": "§7Shift-left-click to unclaim this permit.§r",
   "permit.instructions.right_click": "§7Shift-right-click to claim this permit.§r",
   "permit.items.item": "- %s",
-  "permit.items.joiner": ", ",
-  "permit.items.joiner_and": " and ",
-  "permit.items.joiner_last": ", and ",
   "permit.items.list": "§aPermit items:§r",
   "permit.owner": "§eOwner: §b%s§r",
   "permit.owner.none": "§cNone§r",
@@ -17,5 +15,6 @@
   "permit.rarity.gold": "§o§l§eGold Tier§r",
   "permit.rarity.iron": "§o§l§fIron Tier§r",
   "permit.rarity.none": "§o§l§cNo Tier§r",
-  "permit.title": "%s Permit"
+  "permit.title": "%s Permit",
+  "permit.title.none": "Permit"
 }

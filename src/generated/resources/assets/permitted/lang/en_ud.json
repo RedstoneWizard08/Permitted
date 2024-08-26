@@ -1,13 +1,11 @@
 {
-  "death.attack.permit_office.waited_too_long": "˙sǝɔuǝnbǝsuoɔ ǝɥʇ pǝɹǝɟɟns %1$s puɐ 'qoظ sıɥ pıp uɐıɹ⅁",
+  "death.attack.permit_office.waited_too_long": "˙sǝɔuǝnbǝsuoɔ ǝɥʇ pǝɹǝɟɟns %1$s puɐ 'qoظ sʇı pıp ǝɔıɟɟO ʇıɯɹǝԀ ǝɥ⟘",
+  "death.attack.permit_office.waited_too_long.player": "˙%2$s ɯoɹɟ sǝɔuǝnbǝsuoɔ ǝɥʇ pǝɹǝɟɟns %1$s puɐ 'qoظ sʇı pıp ǝɔıɟɟO ʇıɯɹǝԀ ǝɥ⟘",
   "item.permitted.permit": "ʇıɯɹǝԀ",
   "itemGroup.permitted": "pǝʇʇıɯɹǝԀ",
   "permit.instructions.left_click": "ɹ§˙ʇıɯɹǝd sıɥʇ ɯıɐןɔun oʇ ʞɔıןɔ-ʇɟǝן-ʇɟıɥSㄥ§",
   "permit.instructions.right_click": "ɹ§˙ʇıɯɹǝd sıɥʇ ɯıɐןɔ oʇ ʞɔıןɔ-ʇɥbıɹ-ʇɟıɥSㄥ§",
   "permit.items.item": "%s -",
-  "permit.items.joiner": " '",
-  "permit.items.joiner_and": " puɐ ",
-  "permit.items.joiner_last": " puɐ '",
   "permit.items.list": "ɹ§:sɯǝʇı ʇıɯɹǝԀɐ§",
   "permit.owner": "ɹ§%sq§ :ɹǝuʍOǝ§",
   "permit.owner.none": "ɹ§ǝuoNɔ§",
@@ -17,5 +15,6 @@
   "permit.rarity.gold": "ɹ§ɹǝı⟘ pןo⅁ǝ§ן§o§",
   "permit.rarity.iron": "ɹ§ɹǝı⟘ uoɹIɟ§ן§o§",
   "permit.rarity.none": "ɹ§ɹǝı⟘ oNɔ§ן§o§",
-  "permit.title": "ʇıɯɹǝԀ %s"
+  "permit.title": "ʇıɯɹǝԀ %s",
+  "permit.title.none": "ʇıɯɹǝԀ"
 }

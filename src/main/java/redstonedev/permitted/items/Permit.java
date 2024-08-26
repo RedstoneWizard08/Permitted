@@ -25,11 +25,11 @@ public class Permit extends Item {
 
     @Override
     public @NotNull Component getName(@NotNull ItemStack stack) {
-        if (stack.hasTag() && !PermitData.get(stack).items.isEmpty()) {
+        if (stack.hasTag() && !PermitData.get(stack).name.isEmpty()) {
             return Component.translatable("permit.title", PermitData.get(stack).getName());
         }
 
-        return super.getName(stack);
+        return Component.translatable("permit.title.none");
     }
 
     @SuppressWarnings("unused")

@@ -5,6 +5,7 @@ public class PermittedLang {
         Permitted.REGISTRATE.addRawLang("itemGroup.permitted", "Permitted");
 
         Permitted.REGISTRATE.addRawLang("permit.title", "%s Permit");
+        Permitted.REGISTRATE.addRawLang("permit.title.none", "Permit");
         Permitted.REGISTRATE.addRawLang("permit.items.list", "§aPermit items:§r");
         Permitted.REGISTRATE.addRawLang("permit.items.item", "- %s");
         Permitted.REGISTRATE.addRawLang("permit.owner", "§eOwner: §b%s§r");
