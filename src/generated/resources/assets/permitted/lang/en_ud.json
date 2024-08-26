@@ -2,6 +2,8 @@
   "death.attack.permit_office.waited_too_long": "˙sǝɔuǝnbǝsuoɔ ǝɥʇ pǝɹǝɟɟns %1$s puɐ 'qoظ sıɥ pıp uɐıɹ⅁",
   "item.permitted.permit": "ʇıɯɹǝԀ",
   "itemGroup.permitted": "pǝʇʇıɯɹǝԀ",
+  "permit.instructions.left_click": "ɹ§˙ʇıɯɹǝd sıɥʇ ɯıɐןɔun oʇ ʞɔıןɔ-ʇɟǝן-ʇɟıɥSㄥ§",
+  "permit.instructions.right_click": "ɹ§˙ʇıɯɹǝd sıɥʇ ɯıɐןɔ oʇ ʞɔıןɔ-ʇɥbıɹ-ʇɟıɥSㄥ§",
   "permit.items.item": "%s -",
   "permit.items.joiner": " '",
   "permit.items.joiner_and": " puɐ ",

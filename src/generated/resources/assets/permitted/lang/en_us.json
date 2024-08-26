@@ -2,6 +2,8 @@
   "death.attack.permit_office.waited_too_long": "Grian did his job, and %1$s suffered the consequences.",
   "item.permitted.permit": "Permit",
   "itemGroup.permitted": "Permitted",
+  "permit.instructions.left_click": "§7Shift-left-click to unclaim this permit.§r",
+  "permit.instructions.right_click": "§7Shift-right-click to claim this permit.§r",
   "permit.items.item": "- %s",
   "permit.items.joiner": ", ",
   "permit.items.joiner_and": " and ",

@@ -7,6 +7,7 @@ import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegisterCommandsEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -17,6 +18,8 @@ import org.slf4j.Logger;
 import redstonedev.permitted.commands.PermitCommand;
 import redstonedev.permitted.data.PermitData;
 import redstonedev.permitted.items.Permit;
+
+import java.util.Optional;
 
 @Mod(Permitted.MOD_ID)
 public class Permitted {
@@ -46,6 +49,19 @@ public class Permitted {
                 id("rarity"),
                 (stack, level, entity, id) -> PermitData.getOrCreate(stack).rarity.ordinal() / 10f
         ));
+    }
+
+    @SubscribeEvent
+    public void leftClick(PlayerInteractEvent.LeftClickEmpty event) {
+        if (event.getItemStack().getItem() instanceof Permit && event.getEntity().isCrouching()) {
+            PermitData permitData = PermitData.getOrCreate(event.getItemStack());
+
+            if (permitData.owner.isPresent() && permitData.owner.get().equals(event.getEntity().getUUID())) {
+                permitData.owner = Optional.empty();
+                permitData.ownerName = Optional.empty();
+                PermitData.set(event.getItemStack(), permitData);
+            }
+        }
     }
 
     @SubscribeEvent

@@ -5,6 +5,10 @@
     "compatibilityLevel": "JAVA_8",
     "refmap": "permitted.refmap.json",
     "mixins": [
+        "NumismaticsGuiTexturesMixin",
+        "VendorBlockEntityAccessor",
+        "VendorBlockEntityMixin",
+        "VendorMenuMixin"
     ],
     "client": [
     ],

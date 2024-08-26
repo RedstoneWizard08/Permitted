@@ -2,6 +2,7 @@ package redstonedev.permitted.data;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
@@ -18,6 +19,7 @@ import java.util.function.Supplier;
 @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
 public class PermitData {
     public static final Codec<PermitData> CODEC = RecordCodecBuilder.create(inst -> inst.group(
+            Codec.STRING.fieldOf("name").forGetter(data -> data.name),
             ItemStack.CODEC.listOf().xmap(ArrayList::new, ArrayList::new).fieldOf("items").forGetter(data -> new ArrayList<>(data.items.stream().map(Item::getDefaultInstance).toList())),
             Codec.STRING.xmap(Rarity::valueOf, Rarity::name).fieldOf("rarity").forGetter(data -> data.rarity),
             ExtraCodecs.UUID_CODEC.optionalFieldOf("owner").forGetter(data -> data.owner),
@@ -26,16 +28,18 @@ public class PermitData {
 
     public static final PermitData DEFAULT = new PermitData();
 
+    public String name;
     public final ArrayList<Item> items;
     public Rarity rarity;
     public Optional<UUID> owner;
     public Optional<String> ownerName;
 
     public PermitData() {
-        this(List.of(), Rarity.NONE, Optional.empty(), Optional.empty());
+        this("", List.of(), Rarity.NONE, Optional.empty(), Optional.empty());
     }
 
-    public PermitData(List<ItemStack> items, Rarity rarity, Optional<UUID> owner, Optional<String> ownerName) {
+    public PermitData(String name, List<ItemStack> items, Rarity rarity, Optional<UUID> owner, Optional<String> ownerName) {
+        this.name = name;
         this.items = new ArrayList<>(items.stream().map(ItemStack::getItem).toList());
         this.rarity = rarity;
         this.owner = owner;
@@ -47,27 +51,7 @@ public class PermitData {
     }
 
     public Component getName() {
-        var comps = new ArrayList<Component>();
-
-        for (Item item : items) {
-            comps.add(item.getName(item.getDefaultInstance()));
-        }
-
-        var comp = Component.empty();
-
-        for (int i = 0; i < comps.size(); i++) {
-            comp = comp.append(comps.get(i));
-
-            if (i < comps.size() - 2) {
-                comp = comp.append(Component.translatable("permit.items.joiner"));
-            } else if (i == comps.size() - 2 && comps.size() == 2) {
-                comp = comp.append(Component.translatable("permit.items.joiner_and"));
-            } else if (i == comps.size() - 2) {
-                comp = comp.append(Component.translatable("permit.items.joiner_last"));
-            }
-        }
-
-        return comp;
+        return Component.literal(name).withStyle(rarity.color);
     }
 
     public static PermitData get(ItemStack stack) {
@@ -91,19 +75,21 @@ public class PermitData {
     }
 
     public enum Rarity {
-        NONE(0),
-        DIRT(1),
-        IRON(2),
-        GOLD(3),
-        DIAMOND(4),
-        EMERALD(5);
+        NONE(0, ChatFormatting.RESET),
+        DIRT(1, ChatFormatting.RESET),
+        IRON(2, ChatFormatting.GRAY),
+        GOLD(3, ChatFormatting.GOLD),
+        DIAMOND(4, ChatFormatting.AQUA),
+        EMERALD(5, ChatFormatting.GREEN);
 
         public final int stars;
         public final String tooltip;
+        public final ChatFormatting color;
 
-        Rarity(int stars) {
+        Rarity(int stars, ChatFormatting color) {
             this.stars = stars;
             this.tooltip = "permit.rarity." + name().toLowerCase();
+            this.color = color;
         }
 
         public Component getTooltip() {

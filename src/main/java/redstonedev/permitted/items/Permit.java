@@ -3,6 +3,7 @@ package redstonedev.permitted.items;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -49,6 +50,10 @@ public class Permit extends Item {
 
             event.getToolTip().add(Component.empty());
             event.getToolTip().add(Component.translatable("permit.owner", permitData.getOwner()));
+
+            event.getToolTip().add(Component.empty());
+            event.getToolTip().add(Component.translatable("permit.instructions.right_click"));
+            event.getToolTip().add(Component.translatable("permit.instructions.left_click"));
         }
     }
 

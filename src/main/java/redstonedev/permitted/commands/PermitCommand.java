@@ -1,6 +1,8 @@
 package redstonedev.permitted.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.StringArgumentType;
+import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.arguments.item.ItemArgument;
@@ -90,6 +92,27 @@ public class PermitCommand {
                                             var permitData = PermitData.get(handItem);
 
                                             permitData.rarity = rarity;
+                                            PermitData.set(handItem, permitData);
+                                        }
+                                    }
+
+                                    return 1;
+                                })
+                        )
+                )
+                .then(literal("name")
+                        .then(argument("name", StringArgumentType.greedyString())
+                                .executes(cx -> {
+                                    var name = StringArgumentType.getString(cx, "name");
+                                    var player = cx.getSource().getPlayer();
+
+                                    if (player != null) {
+                                        var handItem = player.getMainHandItem();
+
+                                        if (handItem.getItem() instanceof Permit) {
+                                            var permitData = PermitData.get(handItem);
+
+                                            permitData.name = name;
                                             PermitData.set(handItem, permitData);
                                         }
                                     }
