@@ -5,8 +5,8 @@ A mod adding Hermitcraft-like permits to the game!
 ## Features
 
 - [x] A dynamic Permit item that can be a permit for any number of items.
-- [ ] A dynamic Permit that can be a permit for any number of item tags.
+- [x] A dynamic Permit that can be a permit for any number of item tags.
 - [x] Permit tiers.
 - [x] A `/permit` command for easy permit management.
 - [ ] Permissions for the `/permit` command
-- [ ] Integration with Create: Numismatics to enforce permits.
+- [x] Integration with Create: Numismatics to enforce permits.
