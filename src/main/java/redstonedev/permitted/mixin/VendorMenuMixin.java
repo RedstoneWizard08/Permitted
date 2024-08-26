@@ -30,6 +30,6 @@ public abstract class VendorMenuMixin extends MenuBase<VendorBlockEntity> {
 
     @Redirect(method = "addSlots", at = @At(value = "NEW", target = "(Lnet/minecraft/world/Container;III)Lnet/minecraft/world/inventory/Slot;"))
     public Slot redirectSellingSlot(Container container, int slot, int x, int y) {
-        return new PermitFilteredSlot((VendorBlockEntityAccessor) this.contentHolder, container, ((IHasPermitContainer) this.contentHolder).getPermitContainer(), slot, x, y);
+        return new PermitFilteredSlot(this.contentHolder, container, ((IHasPermitContainer) this.contentHolder).getPermitContainer(), slot, x, y);
     }
 }
