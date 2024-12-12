@@ -1,6 +1,6 @@
 {
-    "nuxt.isNuxtApp": false,
-    "java.jdt.ls.java.home": "/usr/lib/jvm/openjdk-21",
-    "java.import.gradle.java.home": "/usr/lib/jvm/openjdk-21",
+    "java.jdt.ls.java.home": "/usr/lib/jvm/openjdk-17",
+    "java.import.gradle.java.home": "/usr/lib/jvm/openjdk-17",
+    "kotlin.java.home": "/usr/lib/jvm/openjdk-17",
     "java.configuration.updateBuildConfiguration": "automatic"
 }

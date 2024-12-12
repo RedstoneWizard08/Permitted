@@ -1,0 +1,47 @@
+{
+    "schemaVersion": 1,
+    "id": "${mod_id}",
+    "version": "${mod_version}",
+    "name": "${mod_name}",
+    "description": "${mod_description}",
+    "authors": ["${mod_authors}"],
+    "contributors": [],
+    "contact": {
+        "homepage": "https://modrinth.com/mod/permitted",
+        "sources": "https://github.com/RedstoneWizard08/Permitted"
+    },
+    "license": "${mod_license}",
+    "icon": "${mod_id}.png",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+            "redstonedev.permitted.fabric.PermittedFabric"
+        ],
+        "client": [
+            "redstonedev.permitted.fabric.PermittedFabricClient"
+        ],
+        "fabric-datagen": [
+            "redstonedev.permitted.fabric.PermittedFabricDataGen"
+        ]
+    },
+    "mixins": [
+        "permitted.mixins.json",
+        "permitted-common.mixins.json"
+    ],
+    "depends": {
+        "fabric": ">=${fabric_api_version}",
+        "minecraft": "~${minecraft_version}",
+        "create": ">=${create_fabric_version}",
+        "numismatics": ">=${numismatics_version}"
+    },
+    "custom": {
+        "modmenu": {
+            "parent": {
+                "id": "${mod_id}",
+                "name": "${mod_name}",
+                "description": "${mod_description}",
+                "icon": "${mod_id}.png"
+            }
+        }
+    }
+}
